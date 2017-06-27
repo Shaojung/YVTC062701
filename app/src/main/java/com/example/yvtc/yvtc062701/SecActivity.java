@@ -13,8 +13,9 @@ public class SecActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sec);
 
         Intent it = getIntent();
-        int a = it.getIntExtra("va", 0);
-        int b = it.getIntExtra("vb", 0);
+        Bundle bundle = it.getExtras();
+        int a = bundle.getInt("va");
+        int b = bundle.getInt("vb");
         TextView tv = (TextView) findViewById(R.id.textView);
         tv.setText(String.valueOf(a + b));
     }

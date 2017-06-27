@@ -24,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
         ed2 = (EditText) findViewById(R.id.editText3);
         int a = Integer.valueOf(ed1.getText().toString());
         int b = Integer.valueOf(ed2.getText().toString());
-        it.putExtra("va", a);
-        it.putExtra("vb", b);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("va", a);
+        bundle.putInt("vb", b);
+        it.putExtras(bundle);
         startActivity(it);
     }
     public void toPage3(View v)
@@ -46,7 +49,5 @@ public class MainActivity extends AppCompatActivity {
                 tv2.setText(str);
             }
         }
-
-
     }
 }
