@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    final int REQUEST_CODE_USERNAME = 321;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +31,22 @@ public class MainActivity extends AppCompatActivity {
     public void toPage3(View v)
     {
         Intent it = new Intent(MainActivity.this, ThirdActivity.class);
-        startActivityForResult(it, 321);
+        startActivityForResult(it, REQUEST_CODE_USERNAME);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_USERNAME)
+        {
+            if (resultCode == RESULT_OK)
+            {
+                TextView tv2 = (TextView) findViewById(R.id.textView2);
+                String str = data.getStringExtra("username");
+                tv2.setText(str);
+            }
+        }
 
-        TextView tv2 = (TextView) findViewById(R.id.textView2);
-        String str = data.getStringExtra("username");
-        tv2.setText(str);
+
     }
 }
